@@ -38,9 +38,7 @@
     //   app.route.rendered();
     },
     'init': () => {
-      window.addEventListener('hashchange', () => {
-        app.routeChange();
-      });
+      window.addEventListener('hashchange', () => app.routeChange())
       if (!window.location.hash) {
         window.location.hash = app.default;
       } else {

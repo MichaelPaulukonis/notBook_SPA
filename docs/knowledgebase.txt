@@ -26,14 +26,8 @@ Using the example from the codepen below, only one section at a time is visible.
 
 Why? As an exercise, mostly. Not of out necessity.
 
-~~TODO: get an index at the top of everything (will need an index ultimately, anyway).~~
+See [this codepen example](https://codepen.io/coltborg/pen/EyzoJm) that relies on a lot of CSS? All of the content is in the HTML, and it relies on the [`:target` CSS pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:target). This requires the target element (`id`) to be present/pre-rendered on the page, but maybe we could load the HTML on-demand (provided all files are pre-listed).
 
-See [this codepen example](https://codepen.io/coltborg/pen/EyzoJm) that relies on a lot of CSS? All of the content is in the HTML, but we should be able to load it on-deman (provided all files are pre-listed)
-
-~~That codepen didn't quite work, but maybe it will now.~~
-
-In an `iframe` with a `srcdoc` attribute (which is supposed to be more secure), anchors don't work so well. However, according to [stackoverflow](https://stackoverflow.com/a/59004815/41153) using `about:srcdoc#<id-foo>` WILL work - and it does, indeed. Hooray!
+Originally, I couldn't get this to work, because in an `iframe` with a `srcdoc` attribute (which is supposed to be more secure), anchors don't work so well. However, according to [stackoverflow](https://stackoverflow.com/a/59004815/41153) using `about:srcdoc#<id-foo>` WILL work - and it does, indeed. Hooray!
 
 The codepen DOES work - once I actually copy the rendered CSS, instead of the raw SCSS that is displayed in the pen. (NOTE: asking codepen to display the rendered version was throwing a fatal error, but I was able to gank the CSS from dev-tools in the iframe).
-
-~~I'm working on integrating the CSS and seeing how it will work. Woo!~~

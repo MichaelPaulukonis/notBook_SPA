@@ -17,7 +17,24 @@ const pages = [
 const targ = document.getElementById('main')
 const links = document.getElementById('links')
 
-pages.forEach((page, i) => {
+const inIframe = () => {
+  try {
+    return window.self !== window.top;
+  } catch (e) {
+    return true;
+  }
+}
+
+const buildAnchor = (id, content) => {
+  const anchor = document.createElement('a')
+  // only add `about:srcdoc` if we're running on editor.p5js.org (ugh)
+  const prefix = inIframe() ? 'about:srcdoc' : ''
+  anchor.href = `${prefix}#${id}`
+  anchor.innerHTML = content
+  return anchor
+}
+
+const buildPageElement = (page, i) => {
   const header = document.createElement('header')
   const altheader = (i % 2 === 0) ? 'header1' : 'header2'
   header.className = `${altheader} ${page}-header`
@@ -36,10 +53,10 @@ pages.forEach((page, i) => {
   div.appendChild(container)
   targ.appendChild(div)
 
-  const anchor = document.createElement('a')
-  anchor.href = `about:srcdoc#${div.id}`
-  anchor.innerHTML = page
+  const anchor = buildAnchor(div.id, page)
   const li = document.createElement('li')
   li.appendChild(anchor)
   links.appendChild(li)
-})
+}
+
+pages.forEach((page, i) => buildPageElement(page,i))
